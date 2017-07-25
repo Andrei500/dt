@@ -1,0 +1,87 @@
+html.remodal-is-locked {
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.remodal,
+[data-remodal-id] {
+    display: none;
+}
+
+.remodal-overlay {
+    position: fixed;
+    z-index: 9999;
+    top: -5000px;
+    right: -5000px;
+    bottom: -5000px;
+    left: -5000px;
+    display: none;
+}
+
+.remodal-wrapper {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    overflow: auto;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+}
+
+.remodal-wrapper:after {
+    display: inline-block;
+    height: 100%;
+    margin-left: -0.05em;
+    content: "";
+}
+
+.remodal-overlay,
+.remodal-wrapper {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.remodal {
+    position: relative;
+    outline: none;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.remodal-is-initialized {
+    display: inline-block;
+}
+
+.remodal-overlay.remodal-is-opening {
+    -webkit-animation-name: remodal-overlay-opening-keyframes;
+    animation-name: remodal-overlay-opening-keyframes;
+}
+
+.remodal-overlay.remodal-is-closing {
+    -webkit-animation-name: remodal-overlay-closing-keyframes;
+    animation-name: remodal-overlay-closing-keyframes;
+}
+
+.remodal.remodal-is-opening {
+    -webkit-animation-name: remodal-opening-keyframes;
+    animation-name: remodal-opening-keyframes;
+}
+
+.remodal.remodal-is-closing {
+    -webkit-animation-name: remodal-closing-keyframes;
+    animation-name: remodal-closing-keyframes;
+}
+
+.lt-ie9 .remodal-overlay {
+    background: #2b2e38;
+}
+
+.lt-ie9 .remodal {
+    width: 700px;
+}
+

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /lite/
+Sitemap: http://www.donbass-tour.ru/sitemap.xml
+Host: www.donbass-tour.ru

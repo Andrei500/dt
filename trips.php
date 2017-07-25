@@ -50,6 +50,7 @@
 						"ценаОбратно": "2300",
 						"времяВПути": "21,5",
 						"дниПоездок": "Пн, Пт",
+						"дниПоездокОбр": "Пн, Пт",
 						"местоПрибытия": "а/с Новоясеневская",
 						"ссылкаМестаПрибытия": "https://yandex.ua/maps/-/CZspIL1k",
 						"ценаДетям": "50 %",
@@ -62,6 +63,7 @@
 						"ценаОбратно": "1500",
 						"времяВПути": "14",
 						"дниПоездок": "Вт, Сб",
+						"дниПоездокОбр": "Вт, Сб",
 						"местоПрибытия": "а/с Воронеж",
 						"ссылкаМестаПрибытия": "https://yandex.ua/maps/-/CZspMQNV",
 						"ценаДетям": "550 р",
@@ -74,6 +76,7 @@
 						"ценаОбратно": "2100",
 						"времяВПути": "15",
 						"дниПоездок": "Ежедневно",
+						"дниПоездокОбр": "Ежедневно",
 						"местоПрибытия": "Автовокзал",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/-/CZgqNYi~",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -87,6 +90,7 @@
 						"ценаОбратно": "2100",
 						"времяВПути": "15,5",
 						"дниПоездок": "Ежедневно",
+						"дниПоездокОбр": "Ежедневно",
 						"местоПрибытия": "Нефтебаза",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/-/CZgqNFp6",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -100,6 +104,7 @@
 						"ценаОбратно": "2200",
 						"времяВПути": "17",
 						"дниПоездок": "Ежедневно",
+						"дниПоездокОбр": "Ежедневно",
 						"местоПрибытия": "бул. Ленина, 14",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/-/CZgqJX2K",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -113,6 +118,7 @@
 						"ценаОбратно": "2300",
 						"времяВПути": "19",
 						"дниПоездок": "Ежедневно",
+						"дниПоездокОбр": "Ежедневно",
 						"местоПрибытия": "Автовокзал Ялта",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/-/CZgqJPmC",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -126,6 +132,7 @@
 						"ценаОбратно": "2300",
 						"времяВПути": "19",
 						"дниПоездок": "Ежедневно",
+						"дниПоездокОбр": "Ежедневно",
 						"местоПрибытия": "5й км, автостоянка, 11 павильон",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/-/CZgqJSZq",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -139,6 +146,7 @@
 						"ценаОбратно": "2300",
 						"времяВПути": "18,5",
 						"дниПоездок": "Вт, Чт, Сб",
+						"дниПоездокОбр": "Ср, Пт, Сб",
 						"местоПрибытия": "пр-т Победы, 63/2",
 						"ссылкаМестаПрибытия": "https://yandex.ru/maps/?z=17&ll=33.34505721726599..",
 						"ценаДетям": "1600", "ценаЖивотным": "1800",
@@ -155,10 +163,14 @@
 				$.each(рейсы, function (key, data) {
 
 					if (data['шаблон'] == "1") {
-						var template = 	'<div class="remodal" data-remodal-id="' + data['транслит'] + '"><div class="newsOpened"><div class="frame"><div class="wrapHero"><span class="h2">' +data['город'] + '</span><span style="margin: 0 auto 15px auto;" class="lineStar"></span><button data-remodal-action="close" class="remodal-close"></button><hr style="margin-top: 35px;"><div class="wrapTrip"><div class="infoTrip"><div class="directionAndPrice"><i>донецк<span class="directionArrow"></span><br>' +data['город']+ '</i><span class="infoTripPrice">' +data['ценаТуда']+ ' Р</span><a href="news.php#news2" target="_blank" style="margin-top: 15px" class="btnOrangeLine">Акция ></a><span>Задние места -' +data['задниеМеста']+ ' р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ 'ч, с учётом таможни и парома</i></p><p><b>Дни поездок:</b><i>' +data['дниПоездок']+ '</i></p><p><b>Отправление: <br><select onchange="get_city($(this).val(), $(this))" id="cityTrip" class="cityTrip"><option value="1">Макеевка</option><option selected value="2">Донецк</option><option value="3">Харцызск</option></select></b><i id="forAdres">9 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZgqFR2g" target="_blank">пл. Коммунаров, 1</a></i></p><p><b>Прибытие:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Спец. цена:</b><i>дети до 10 лет - <b>' + data['ценаДетям'] + ' р</b><br> дом. животные (до 20 кг) - <b>' + data['ценаЖивотным'] + ' р</b> </i></p><p><b></b><i>При предъявлении <a href="http://donbass-tour.ru/news.php#news3" target="_blank">талона</a> скидка <b>100</b> р</i></p></div><hr class="hr_trip"><div class="infoTrip"><div class="directionAndPrice"><i>' +data['город']+ '<span class="directionArrow"></span><br>донецк</i><span class="infoTripPrice">' +data['ценаОбратно']+ ' Р</span><a href="news.php" target="_blank" style="margin-top: 15px" class="btnOrangeLine">Акции ></a></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ ' ч, с учётом таможни и парома</i></p><p><b>Дни поездок:</b><i>' +data['дниПоездок']+ '</i></p><p><b>Отправление:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Прибытие: <br><select onchange="get_city($(this).val(), $(this))" id="cityTrip" class="cityTrip"><option value="1">Макеевка</option><option selected value="2">Донецк</option><option value="3">Харцызск</option></select></b><i id="forAdres">9 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZgqFR2g" target="_blank">пл. Коммунаров, 1</a></i></p><p><b>Спец. цена:</b><i>дети до 10 лет - <b>' + data['ценаДетям'] + ' р</b><br> дом. животные (до 20 кг) - <b>' + data['ценаЖивотным'] + ' р</b> </i></p><p><b></b><i>При предъявлении <a href="http://donbass-tour.ru/news.php#news3" target="_blank">талона</a> скидка <b>100</b> р</i></p></div></div><hr style="margin-bottom: 35px;"><a href="#bookingForm" onclick="addFormBooking($(this))" class="btnOrange">Бронировать</a><a target="_blank" href="news.php" class="sales">Узнать о скидках <b style="margin-left: 5px;"> ></b></a></div></div></div></div> ';
+						var template = 	'<div class="remodal" data-remodal-id="' + data['транслит'] + '"><div class="newsOpened"><div class="frame"><div class="wrapHero"><span class="h2">' +data['город'] + '</span><span style="margin: 0 auto 15px auto;" class="lineStar"></span><button data-remodal-action="close" class="remodal-close"></button><hr style="margin-top: 35px;"><div class="wrapTrip"><div class="infoTrip"><div class="directionAndPrice"><i>донецк<span class="directionArrow"></span><br>' +data['город']+ '</i><span class="infoTripPrice">' +data['ценаТуда']+ ' Р</span><a href="news.php#news2" target="_blank" style="margin-top: 15px" class="btnOrangeLine">Акция ></a><span>Задние места -' +data['задниеМеста']+ ' р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ 'ч, с учётом таможни и парома</i></p><p><b>Дни поездок:</b><i>' 
+						+data['дниПоездок']+ '</i></p><p><b>Отправление: <br><select onchange="get_city($(this).val(), $(this))" id="cityTrip" class="cityTrip"><option value="1">Макеевка</option><option selected value="2">Донецк</option><option value="3">Харцызск</option></select></b><i id="forAdres">9 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZgqFR2g" target="_blank">пл. Коммунаров, 1</a></i></p><p><b>Прибытие:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Спец. цена:</b><i>дети до 10 лет - <b>' + data['ценаДетям'] + ' р</b><br> дом. животные (до 20 кг) - <b>' + data['ценаЖивотным'] + ' р</b> </i></p><p><b></b><i>При предъявлении <a href="http://donbass-tour.ru/news.php#news3" target="_blank">талона</a> скидка <b>100</b> р</i></p></div><hr class="hr_trip"><div class="infoTrip"><div class="directionAndPrice"><i>' +data['город']+ '<span class="directionArrow"></span><br>донецк</i><span class="infoTripPrice">' +data['ценаОбратно']+ ' Р</span><a href="news.php" target="_blank" style="margin-top: 15px" class="btnOrangeLine">Акции ></a></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ ' ч, с учётом таможни и парома</i></p><p><b>Дни поездок:</b><i>' 
+						+data['дниПоездокОбр']+ '</i></p><p><b>Отправление:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Прибытие: <br><select onchange="get_city($(this).val(), $(this))" id="cityTrip" class="cityTrip"><option value="1">Макеевка</option><option selected value="2">Донецк</option><option value="3">Харцызск</option></select></b><i id="forAdres">9 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZgqFR2g" target="_blank">пл. Коммунаров, 1</a></i></p><p><b>Спец. цена:</b><i>дети до 10 лет - <b>' + data['ценаДетям'] + ' р</b><br> дом. животные (до 20 кг) - <b>' + data['ценаЖивотным'] + ' р</b> </i></p><p><b></b><i>При предъявлении <a href="http://donbass-tour.ru/news.php#news3" target="_blank">талона</a> скидка <b>100</b> р</i></p></div></div><hr style="margin-bottom: 35px;"><a href="#bookingForm" onclick="addFormBooking($(this))" class="btnOrange">Бронировать</a><a target="_blank" href="news.php" class="sales">Узнать о скидках <b style="margin-left: 5px;"> ></b></a></div></div></div></div> ';
 					}
 					else {
-						var template = 	'<div class="remodal" data-remodal-id="' + data['транслит'] + '"><div class="newsOpened"><div class="frame"><div class="wrapHero"><span class="h2">' +data['город'] + '</span><span style="margin: 0 auto 15px auto;" class="lineStar"></span><button data-remodal-action="close" class="remodal-close"></button><hr style="margin-top: 35px;"><div class="wrapTrip"><div class="infoTrip"><div class="directionAndPrice"><i>донецк<span class="directionArrow"></span><br>' +data['город']+ '</i><span class="infoTripPrice">' +data['ценаТуда']+ ' Р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ 'ч, с учётом таможни</i></p><p><b>Дни поездок:</b><i>' +data['дниПоездок']+ '</i></p><p><b>Отправление:</b>  <i>13 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZspIV8Y" target="_blank">Донецк, Южный АВ</a></i></p><p><b>Прибытие:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Спец. цена:</b><i>дети до 12 лет - <b>' + data['ценаДетям'] + '</b></i></p></div><hr class="hr_trip" style="height:335px"><div class="infoTrip"><div class="directionAndPrice"><i>' +data['город']+ '<span class="directionArrow"></span><br>донецк</i><span class="infoTripPrice">' +data['ценаОбратно']+ ' Р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ ' ч, с учётом таможни</i></p><p><b>Дни поездок:</b><i>' +data['дниПоездок']+ '</i></p><p><b>Отправление:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Прибытие:</b><i>13 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZspIV8Y" target="_blank">Донецк, Южный АВ</a></i></p><p><b>Спец. цена:</b><i>дети до 12 лет - <b>' + data['ценаДетям'] + '</b></i></p></div></div><hr style="margin-bottom: 35px;"><a href="#bookingForm" onclick="addFormBooking($(this))" class="btnOrange">Бронировать</a></div></div></div></div> ';
+						var template = 	'<div class="remodal" data-remodal-id="' + data['транслит'] + '"><div class="newsOpened"><div class="frame"><div class="wrapHero"><span class="h2">' +data['город'] + '</span><span style="margin: 0 auto 15px auto;" class="lineStar"></span><button data-remodal-action="close" class="remodal-close"></button><hr style="margin-top: 35px;"><div class="wrapTrip"><div class="infoTrip"><div class="directionAndPrice"><i>донецк<span class="directionArrow"></span><br>' +data['город']+ '</i><span class="infoTripPrice">' +data['ценаТуда']+ ' Р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ 'ч, с учётом таможни</i></p><p><b>Дни поездок:</b><i>' 
+						+data['дниПоездок']+ '</i></p><p><b>Отправление:</b>  <i>13 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZspIV8Y" target="_blank">Донецк, Южный АВ</a></i></p><p><b>Прибытие:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Спец. цена:</b><i>дети до 12 лет - <b>' + data['ценаДетям'] + '</b></i></p></div><hr class="hr_trip" style="height:335px"><div class="infoTrip"><div class="directionAndPrice"><i>' +data['город']+ '<span class="directionArrow"></span><br>донецк</i><span class="infoTripPrice">' +data['ценаОбратно']+ ' Р</span></div><p><b>Время в пути:</b><i>' +data['времяВПути']+ ' ч, с учётом таможни</i></p><p><b>Дни поездок:</b><i>' 
+						+data['дниПоездокОбр']+ '</i></p><p><b>Отправление:</b><i><a href="' +data['ссылкаМестаПрибытия']+ '" target="_blank">' +data['местоПрибытия']+ '</a></i></p><p><b>Прибытие:</b><i>13 <sup>00</sup><br><a href="https://yandex.ua/maps/-/CZspIV8Y" target="_blank">Донецк, Южный АВ</a></i></p><p><b>Спец. цена:</b><i>дети до 12 лет - <b>' + data['ценаДетям'] + '</b></i></p></div></div><hr style="margin-bottom: 35px;"><a href="#bookingForm" onclick="addFormBooking($(this))" class="btnOrange">Бронировать</a></div></div></div></div> ';
 
 					}
 
